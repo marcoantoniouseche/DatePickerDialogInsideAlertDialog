@@ -4,4 +4,5 @@
     <string name="display_dialog">display dialog</string>
     <string name="name">Name</string>
     <string name="citizenship">Citizenship</string>
+    <string name="lorem_ipsum_2">lorem_ipsum</string>
 </resources>

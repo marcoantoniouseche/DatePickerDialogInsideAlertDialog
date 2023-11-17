@@ -1,9 +1,10 @@
 package com.rand.datepickerdialoginsidealertdialog
 
+import android.app.DatePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.rand.datepickerdialoginsidealertdialog.databinding.ActivityMainBinding
 import com.rand.datepickerdialoginsidealertdialog.databinding.DialogInputBinding
@@ -37,32 +38,55 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayDialog() {
-        val dialog = AlertDialog.Builder(this)
+        val alertDialog = AlertDialog.Builder(this)
         val inputFormat = DialogInputBinding.inflate(layoutInflater)
-        inputFormat.nameInput.width = 350
-        inputFormat.citizenshipInput.width = 350
+        inputFormat.date.text = String()
+        inputFormat.dateButton.setOnClickListener {
+            displayDate(inputFormat.date)
+        }
 
-        dialog.setMessage("Enter your information")
-        dialog.setView(inputFormat.root)
-        dialog.setPositiveButton("Next",
+        alertDialog.setMessage("Enter your information")
+        alertDialog.setView(inputFormat.root)
+        alertDialog.setPositiveButton("Next",
             DialogInterface.OnClickListener {
                     dialog, which ->
-                        if (!(inputFormat.nameInput.text.isEmpty()
-                            || inputFormat.citizenshipInput.text.isEmpty())) {
-                                persons.add(Person(inputFormat.nameInput.text.toString(),
-                                    inputFormat.citizenshipInput.text.toString(),
-                                    "24/11/2011"))
+                        val firstValue = inputFormat.nameInput.text.toString().isEmpty()
+                        val secondValue = inputFormat.citizenshipInput.text.toString().isEmpty()
+                        val thirdValue = inputFormat.date.text.toString().isEmpty()
+                        val condition = firstValue || secondValue || thirdValue
+                        if (!(condition)) {
+                            persons.add(Person(inputFormat.nameInput.text.toString(),
+                                inputFormat.citizenshipInput.text.toString(),
+                                inputFormat.date.text.toString()))
                         }
                         putInHoldContainer()
                         dialog.dismiss()
             }
         )
-        dialog.setNegativeButton("Cancel",
+        alertDialog.setNegativeButton("Cancel",
             DialogInterface.OnClickListener {
                     dialog, which ->
                         dialog.cancel()
             }
         )
-        dialog.show()
+        alertDialog.show()
+    }
+
+    private fun displayDate(date: TextView) {
+        val dialogDate = DatePickerDialog(this)
+        dialogDate.setButton(DatePickerDialog.BUTTON_POSITIVE, "Next",
+            DialogInterface.OnClickListener { dialog, which ->
+                val day = dialogDate.datePicker.dayOfMonth
+                val month = dialogDate.datePicker.month
+                val year = dialogDate.datePicker.year
+                date.text = formattedDate(day, month, year)
+                dialog.dismiss()
+            }
+        )
+        dialogDate.show()
+    }
+
+    private fun formattedDate(day: Int, month: Int, year: Int): String {
+        return "$day/${month + 1}/$year"
     }
 }

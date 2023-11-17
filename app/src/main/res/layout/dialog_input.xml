@@ -9,14 +9,35 @@
     <EditText
         android:id="@+id/nameInput"
         android:hint="@string/name"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"/>
 
     <EditText
         android:id="@+id/citizenshipInput"
         android:hint="@string/citizenship"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/dateButton"
+            android:background="@drawable/baseline_calendar_month_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/date"
+            android:text="@string/lorem_ipsum_2"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </LinearLayout>
