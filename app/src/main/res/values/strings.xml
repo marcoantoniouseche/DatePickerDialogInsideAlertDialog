@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DatePickerDialogInsideAlertDialog</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nunc turpis, bibendum eget velit non, mattis elementum mi. Maecenas eget purus dui. Aliquam nunc odio, congue non massa laoreet, pellentesque egestas dolor. Nulla facilisi. Donec non nisi aliquam, gravida ligula vel, viverra felis. Cras nec euismod nunc, sit amet varius felis. Praesent euismod malesuada leo at tincidunt. Integer sit amet enim sed justo viverra efficitur at sed dolor.</string>
+    <string name="display_dialog">display dialog</string>
 </resources>

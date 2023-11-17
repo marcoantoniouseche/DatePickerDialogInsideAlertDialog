@@ -5,7 +5,11 @@ plugins {
 
 android {
     namespace = "com.rand.datepickerdialoginsidealertdialog"
-    compileSdk = 33
+    compileSdk = 34
+
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.rand.datepickerdialoginsidealertdialog"
